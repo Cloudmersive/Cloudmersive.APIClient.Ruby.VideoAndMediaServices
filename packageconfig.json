@@ -2,7 +2,7 @@
 
   "gemName" : "cloudmersive-video-api-client",
   "gemLicense": "Apache 2.0",
-  "gemVersion": "2.0.1",
+  "gemVersion": "2.0.2",
   "gemHomepage": "https://cloudmersive.com/video-and-media-services-api",
   "gemSummary": "Convert API lets you effortlessly convert, process and encode video and media files.",
   "gemDescription": "Convert and encode video and media files and content between file formats. On-demand.",
