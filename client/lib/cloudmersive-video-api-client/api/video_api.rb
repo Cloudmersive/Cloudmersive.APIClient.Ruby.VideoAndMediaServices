@@ -20,43 +20,37 @@ module CloudmersiveVideoApiClient
       @api_client = api_client
     end
     # Convert Video to Animated GIF format.
-    # Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video's aspect ratio.
-    # @param input_file Input file to perform the operation on.
+    # Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video's aspect ratio.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels.
-    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels.
+    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels.
+    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels.
     # @option opts [BOOLEAN] :preserve_aspect_ratio Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true.
     # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to 24 frames per second.
-    # @option opts [BOOLEAN] :extend_processing_time Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes.
     # @option opts [DateTime] :start_time Optional; Specify the desired starting time of the GIF video in TimeSpan format.
-    # @option opts [DateTime] :time_span Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes.
+    # @option opts [DateTime] :time_span Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds.
     # @return [String]
-    def video_convert_to_gif(input_file, opts = {})
-      data, _status_code, _headers = video_convert_to_gif_with_http_info(input_file, opts)
+    def video_convert_to_gif(opts = {})
+      data, _status_code, _headers = video_convert_to_gif_with_http_info(opts)
       data
     end
 
     # Convert Video to Animated GIF format.
-    # Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
-    # @param input_file Input file to perform the operation on.
+    # Automatically detect video file format and convert it to animated GIF format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB. Default height is 250 pixels, while preserving the video&#39;s aspect ratio.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels.
-    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels.
+    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels.
+    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to 250 pixels, maximum is 500 pixels.
     # @option opts [BOOLEAN] :preserve_aspect_ratio Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true.
     # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to 24 frames per second.
-    # @option opts [BOOLEAN] :extend_processing_time Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes.
     # @option opts [DateTime] :start_time Optional; Specify the desired starting time of the GIF video in TimeSpan format.
-    # @option opts [DateTime] :time_span Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 minutes.
+    # @option opts [DateTime] :time_span Optional; Specify the desired length of the GIF video in TimeSpan format. Limit is 30 seconds. Default is 10 seconds.
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
-    def video_convert_to_gif_with_http_info(input_file, opts = {})
+    def video_convert_to_gif_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VideoApi.video_convert_to_gif ...'
-      end
-      # verify the required parameter 'input_file' is set
-      if @api_client.config.client_side_validation && input_file.nil?
-        fail ArgumentError, "Missing the required parameter 'input_file' when calling VideoApi.video_convert_to_gif"
       end
       # resource path
       local_var_path = '/video/convert/to/gif'
@@ -75,13 +69,12 @@ module CloudmersiveVideoApiClient
       header_params[:'maxHeight'] = opts[:'max_height'] if !opts[:'max_height'].nil?
       header_params[:'preserveAspectRatio'] = opts[:'preserve_aspect_ratio'] if !opts[:'preserve_aspect_ratio'].nil?
       header_params[:'frameRate'] = opts[:'frame_rate'] if !opts[:'frame_rate'].nil?
-      header_params[:'extendProcessingTime'] = opts[:'extend_processing_time'] if !opts[:'extend_processing_time'].nil?
       header_params[:'startTime'] = opts[:'start_time'] if !opts[:'start_time'].nil?
       header_params[:'timeSpan'] = opts[:'time_span'] if !opts[:'time_span'].nil?
 
       # form parameters
       form_params = {}
-      form_params['inputFile'] = input_file
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
 
       # http body (model)
       post_body = nil
@@ -99,41 +92,35 @@ module CloudmersiveVideoApiClient
       return data, status_code, headers
     end
     # Convert Video to MOV format.
-    # Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
-    # @param input_file Input file to perform the operation on.
+    # Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
     # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
     # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
     # @option opts [BOOLEAN] :preserve_aspect_ratio Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true.
     # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
     # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
-    # @option opts [BOOLEAN] :extend_processing_time Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes.
     # @return [String]
-    def video_convert_to_mov(input_file, opts = {})
-      data, _status_code, _headers = video_convert_to_mov_with_http_info(input_file, opts)
+    def video_convert_to_mov(opts = {})
+      data, _status_code, _headers = video_convert_to_mov_with_http_info(opts)
       data
     end
 
     # Convert Video to MOV format.
-    # Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
-    # @param input_file Input file to perform the operation on.
+    # Automatically detect video file format and convert it to MOV format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
     # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
     # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
     # @option opts [BOOLEAN] :preserve_aspect_ratio Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true.
     # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
     # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
-    # @option opts [BOOLEAN] :extend_processing_time Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes.
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
-    def video_convert_to_mov_with_http_info(input_file, opts = {})
+    def video_convert_to_mov_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VideoApi.video_convert_to_mov ...'
-      end
-      # verify the required parameter 'input_file' is set
-      if @api_client.config.client_side_validation && input_file.nil?
-        fail ArgumentError, "Missing the required parameter 'input_file' when calling VideoApi.video_convert_to_mov"
       end
       # resource path
       local_var_path = '/video/convert/to/mov'
@@ -153,11 +140,10 @@ module CloudmersiveVideoApiClient
       header_params[:'preserveAspectRatio'] = opts[:'preserve_aspect_ratio'] if !opts[:'preserve_aspect_ratio'].nil?
       header_params[:'frameRate'] = opts[:'frame_rate'] if !opts[:'frame_rate'].nil?
       header_params[:'quality'] = opts[:'quality'] if !opts[:'quality'].nil?
-      header_params[:'extendProcessingTime'] = opts[:'extend_processing_time'] if !opts[:'extend_processing_time'].nil?
 
       # form parameters
       form_params = {}
-      form_params['inputFile'] = input_file
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
 
       # http body (model)
       post_body = nil
@@ -175,41 +161,35 @@ module CloudmersiveVideoApiClient
       return data, status_code, headers
     end
     # Convert Video to MP4 format.
-    # Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
-    # @param input_file Input file to perform the operation on.
+    # Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
     # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
     # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
     # @option opts [BOOLEAN] :preserve_aspect_ratio Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true.
     # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
     # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
-    # @option opts [BOOLEAN] :extend_processing_time Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes.
     # @return [String]
-    def video_convert_to_mp4(input_file, opts = {})
-      data, _status_code, _headers = video_convert_to_mp4_with_http_info(input_file, opts)
+    def video_convert_to_mp4(opts = {})
+      data, _status_code, _headers = video_convert_to_mp4_with_http_info(opts)
       data
     end
 
     # Convert Video to MP4 format.
-    # Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
-    # @param input_file Input file to perform the operation on.
+    # Automatically detect video file format and convert it to MP4 format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
     # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
     # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
     # @option opts [BOOLEAN] :preserve_aspect_ratio Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true.
     # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
     # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
-    # @option opts [BOOLEAN] :extend_processing_time Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes.
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
-    def video_convert_to_mp4_with_http_info(input_file, opts = {})
+    def video_convert_to_mp4_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VideoApi.video_convert_to_mp4 ...'
-      end
-      # verify the required parameter 'input_file' is set
-      if @api_client.config.client_side_validation && input_file.nil?
-        fail ArgumentError, "Missing the required parameter 'input_file' when calling VideoApi.video_convert_to_mp4"
       end
       # resource path
       local_var_path = '/video/convert/to/mp4'
@@ -229,11 +209,10 @@ module CloudmersiveVideoApiClient
       header_params[:'preserveAspectRatio'] = opts[:'preserve_aspect_ratio'] if !opts[:'preserve_aspect_ratio'].nil?
       header_params[:'frameRate'] = opts[:'frame_rate'] if !opts[:'frame_rate'].nil?
       header_params[:'quality'] = opts[:'quality'] if !opts[:'quality'].nil?
-      header_params[:'extendProcessingTime'] = opts[:'extend_processing_time'] if !opts[:'extend_processing_time'].nil?
 
       # form parameters
       form_params = {}
-      form_params['inputFile'] = input_file
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
 
       # http body (model)
       post_body = nil
@@ -250,42 +229,99 @@ module CloudmersiveVideoApiClient
       end
       return data, status_code, headers
     end
-    # Convert Video to WEBM format.
-    # Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
-    # @param input_file Input file to perform the operation on.
+    # Convert Video to PNG Still Frames.
+    # Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
+    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
+    # @option opts [Object] :frames_per_second Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames.
+    # @return [StillFramesResult]
+    def video_convert_to_still_frames(opts = {})
+      data, _status_code, _headers = video_convert_to_still_frames_with_http_info(opts)
+      data
+    end
+
+    # Convert Video to PNG Still Frames.
+    # Automatically detect video file format and convert it to an array of still frame PNG images. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
+    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
+    # @option opts [Object] :frames_per_second Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames.
+    # @return [Array<(StillFramesResult, Fixnum, Hash)>] StillFramesResult data, response status code and response headers
+    def video_convert_to_still_frames_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VideoApi.video_convert_to_still_frames ...'
+      end
+      # resource path
+      local_var_path = '/video/convert/to/still-frames'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
+      header_params[:'maxWidth'] = opts[:'max_width'] if !opts[:'max_width'].nil?
+      header_params[:'maxHeight'] = opts[:'max_height'] if !opts[:'max_height'].nil?
+      header_params[:'framesPerSecond'] = opts[:'frames_per_second'] if !opts[:'frames_per_second'].nil?
+
+      # form parameters
+      form_params = {}
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Apikey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StillFramesResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VideoApi#video_convert_to_still_frames\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Convert Video to WEBM format.
+    # Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
     # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
     # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
     # @option opts [BOOLEAN] :preserve_aspect_ratio Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true.
     # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
     # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
-    # @option opts [BOOLEAN] :extend_processing_time Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes.
     # @return [String]
-    def video_convert_to_webm(input_file, opts = {})
-      data, _status_code, _headers = video_convert_to_webm_with_http_info(input_file, opts)
+    def video_convert_to_webm(opts = {})
+      data, _status_code, _headers = video_convert_to_webm_with_http_info(opts)
       data
     end
 
     # Convert Video to WEBM format.
-    # Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Maximum output file size is 50GB.
-    # @param input_file Input file to perform the operation on.
+    # Automatically detect video file format and convert it to WEBM format. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
     # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
     # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
     # @option opts [BOOLEAN] :preserve_aspect_ratio Optional; If false, the original video&#39;s aspect ratio will not be preserved, allowing customization of the aspect ratio using maxWidth and maxHeight, potentially skewing the video. Default is true.
     # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
     # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
-    # @option opts [BOOLEAN] :extend_processing_time Optional; If true, will allow additional processing time for the video file conversion, using one API call per additional minute over the 5 minute default processing time, up to a maximum of 25 total minutes. This is generally necessary for files larger than 500 MB or longer than 30 minutes.
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
-    def video_convert_to_webm_with_http_info(input_file, opts = {})
+    def video_convert_to_webm_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VideoApi.video_convert_to_webm ...'
-      end
-      # verify the required parameter 'input_file' is set
-      if @api_client.config.client_side_validation && input_file.nil?
-        fail ArgumentError, "Missing the required parameter 'input_file' when calling VideoApi.video_convert_to_webm"
       end
       # resource path
       local_var_path = '/video/convert/to/webm'
@@ -305,11 +341,10 @@ module CloudmersiveVideoApiClient
       header_params[:'preserveAspectRatio'] = opts[:'preserve_aspect_ratio'] if !opts[:'preserve_aspect_ratio'].nil?
       header_params[:'frameRate'] = opts[:'frame_rate'] if !opts[:'frame_rate'].nil?
       header_params[:'quality'] = opts[:'quality'] if !opts[:'quality'].nil?
-      header_params[:'extendProcessingTime'] = opts[:'extend_processing_time'] if !opts[:'extend_processing_time'].nil?
 
       # form parameters
       form_params = {}
-      form_params['inputFile'] = input_file
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
 
       # http body (model)
       post_body = nil
@@ -326,30 +361,86 @@ module CloudmersiveVideoApiClient
       end
       return data, status_code, headers
     end
+    # Cut a Video to a Shorter Length
+    # Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [DateTime] :start_time Optional; Specify the desired starting time of the cut video in TimeSpan format.
+    # @option opts [DateTime] :time_span Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours.
+    # @return [String]
+    def video_cut_video(opts = {})
+      data, _status_code, _headers = video_cut_video_with_http_info(opts)
+      data
+    end
+
+    # Cut a Video to a Shorter Length
+    # Cuts a video to the specified start and end times. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [DateTime] :start_time Optional; Specify the desired starting time of the cut video in TimeSpan format.
+    # @option opts [DateTime] :time_span Optional; Specify the desired length of the cut video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours.
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    def video_cut_video_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VideoApi.video_cut_video ...'
+      end
+      # resource path
+      local_var_path = '/video/cut'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
+      header_params[:'startTime'] = opts[:'start_time'] if !opts[:'start_time'].nil?
+      header_params[:'timeSpan'] = opts[:'time_span'] if !opts[:'time_span'].nil?
+
+      # form parameters
+      form_params = {}
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Apikey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'String')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VideoApi#video_cut_video\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get detailed information about a video or audio file
     # Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
-    # @param input_file Input file to perform the operation on.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
-    # @return [String]
-    def video_get_info(input_file, opts = {})
-      data, _status_code, _headers = video_get_info_with_http_info(input_file, opts)
+    # @return [MediaInformation]
+    def video_get_info(opts = {})
+      data, _status_code, _headers = video_get_info_with_http_info(opts)
       data
     end
 
     # Get detailed information about a video or audio file
     # Retrieve detailed information about a video or audio file, including format, dimensions, file size, bit rate, duration and start time. Compatible with many formats, including: AVI, ASF, FLV, GIF, MP4, MPEG/MPG, Matroska/WEBM, MOV, AIFF, ASF, CAF, MP3, MP2, MP1, Ogg, OMG/OMA, and WAV. Uses 1 API call per 10 MB of file size.
-    # @param input_file Input file to perform the operation on.
     # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
-    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
-    def video_get_info_with_http_info(input_file, opts = {})
+    # @return [Array<(MediaInformation, Fixnum, Hash)>] MediaInformation data, response status code and response headers
+    def video_get_info_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VideoApi.video_get_info ...'
-      end
-      # verify the required parameter 'input_file' is set
-      if @api_client.config.client_side_validation && input_file.nil?
-        fail ArgumentError, "Missing the required parameter 'input_file' when calling VideoApi.video_get_info"
       end
       # resource path
       local_var_path = '/video/convert/get-info'
@@ -367,7 +458,76 @@ module CloudmersiveVideoApiClient
 
       # form parameters
       form_params = {}
-      form_params['inputFile'] = input_file
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Apikey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MediaInformation')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VideoApi#video_get_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Resizes a Video Preserving the Original Aspect Ratio.
+    # Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
+    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
+    # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
+    # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
+    # @option opts [String] :extension Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output.
+    # @return [String]
+    def video_resize_video(opts = {})
+      data, _status_code, _headers = video_resize_video_with_http_info(opts)
+      data
+    end
+
+    # Resizes a Video Preserving the Original Aspect Ratio.
+    # Resizes a video, while maintaining the original aspect ratio and encoding. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
+    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
+    # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
+    # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
+    # @option opts [String] :extension Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output.
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    def video_resize_video_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VideoApi.video_resize_video ...'
+      end
+      # resource path
+      local_var_path = '/video/resize/preserveAspectRatio'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
+      header_params[:'maxWidth'] = opts[:'max_width'] if !opts[:'max_width'].nil?
+      header_params[:'maxHeight'] = opts[:'max_height'] if !opts[:'max_height'].nil?
+      header_params[:'frameRate'] = opts[:'frame_rate'] if !opts[:'frame_rate'].nil?
+      header_params[:'quality'] = opts[:'quality'] if !opts[:'quality'].nil?
+      header_params[:'extension'] = opts[:'extension'] if !opts[:'extension'].nil?
+
+      # form parameters
+      form_params = {}
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
 
       # http body (model)
       post_body = nil
@@ -380,7 +540,197 @@ module CloudmersiveVideoApiClient
         :auth_names => auth_names,
         :return_type => 'String')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: VideoApi#video_get_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: VideoApi#video_resize_video\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Resizes a Video without Preserving Aspect Ratio.
+    # Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
+    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
+    # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
+    # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
+    # @option opts [String] :extension Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output.
+    # @return [String]
+    def video_resize_video_simple(opts = {})
+      data, _status_code, _headers = video_resize_video_simple_with_http_info(opts)
+      data
+    end
+
+    # Resizes a Video without Preserving Aspect Ratio.
+    # Resizes a video without maintaining original aspect ratio, allowing fully customizable dimensions. May cause image skewing. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
+    # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
+    # @option opts [Integer] :frame_rate Optional; Specify the frame rate of the output video. Defaults to original video frame rate.
+    # @option opts [Integer] :quality Optional; Specify the quality of the output video, where 100 is lossless and 1 is the lowest possible quality with highest compression. Default is 50.
+    # @option opts [String] :extension Optional; Specify the file extension of the input video. This is recommended when inputting a file directly, without a file name. If no file name is available and no extension is provided, the extension will be inferred from the file data, which may cause a different extension to be used in the output.
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    def video_resize_video_simple_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VideoApi.video_resize_video_simple ...'
+      end
+      # resource path
+      local_var_path = '/video/resize/target'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
+      header_params[:'maxWidth'] = opts[:'max_width'] if !opts[:'max_width'].nil?
+      header_params[:'maxHeight'] = opts[:'max_height'] if !opts[:'max_height'].nil?
+      header_params[:'frameRate'] = opts[:'frame_rate'] if !opts[:'frame_rate'].nil?
+      header_params[:'quality'] = opts[:'quality'] if !opts[:'quality'].nil?
+      header_params[:'extension'] = opts[:'extension'] if !opts[:'extension'].nil?
+
+      # form parameters
+      form_params = {}
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Apikey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'String')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VideoApi#video_resize_video_simple\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Scan a Video for NSFW content.
+    # Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being scanned. Use this option for files larger than 2GB.
+    # @option opts [Object] :frames_per_second Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos.
+    # @return [NsfwResult]
+    def video_scan_for_nsfw(opts = {})
+      data, _status_code, _headers = video_scan_for_nsfw_with_http_info(opts)
+      data
+    end
+
+    # Scan a Video for NSFW content.
+    # Automatically detect video file format and scan it for Not Safe For Work (NSFW)/Porn/Racy content. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, OGV, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per frame scanned.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being scanned. Use this option for files larger than 2GB.
+    # @option opts [Object] :frames_per_second Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos.
+    # @return [Array<(NsfwResult, Fixnum, Hash)>] NsfwResult data, response status code and response headers
+    def video_scan_for_nsfw_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VideoApi.video_scan_for_nsfw ...'
+      end
+      # resource path
+      local_var_path = '/video/scan/nsfw'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
+      header_params[:'framesPerSecond'] = opts[:'frames_per_second'] if !opts[:'frames_per_second'].nil?
+
+      # form parameters
+      form_params = {}
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Apikey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'NsfwResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VideoApi#video_scan_for_nsfw\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Split a Video into Two Shorter Videos
+    # Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param split_time Specify the desired time at which to split the video in TimeSpan format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [DateTime] :time_span Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours.
+    # @return [SplitVideoResult]
+    def video_split_video(split_time, opts = {})
+      data, _status_code, _headers = video_split_video_with_http_info(split_time, opts)
+      data
+    end
+
+    # Split a Video into Two Shorter Videos
+    # Cuts a video into two videos based on the specified start time. Supports many input video formats, including AVI, ASF, FLV, MP4, MPEG/MPG, Matroska/WEBM, 3G2, MKV, M4V and MOV. Uses 1 API call per 10 MB of file size. Also uses 1 API call per additional minute of processing time over 5 minutes, up to a maximum of 25 minutes total processing time. Maximum output file size is 50GB.
+    # @param split_time Specify the desired time at which to split the video in TimeSpan format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :input_file Input file to perform the operation on.
+    # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
+    # @option opts [DateTime] :time_span Optional; Specify the desired length of the second video in TimeSpan format. Leave blank to include the rest of the video. Maximum time is 4 hours.
+    # @return [Array<(SplitVideoResult, Fixnum, Hash)>] SplitVideoResult data, response status code and response headers
+    def video_split_video_with_http_info(split_time, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VideoApi.video_split_video ...'
+      end
+      # verify the required parameter 'split_time' is set
+      if @api_client.config.client_side_validation && split_time.nil?
+        fail ArgumentError, "Missing the required parameter 'split_time' when calling VideoApi.video_split_video"
+      end
+      # resource path
+      local_var_path = '/video/split'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params[:'splitTime'] = split_time
+      header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
+      header_params[:'timeSpan'] = opts[:'time_span'] if !opts[:'time_span'].nil?
+
+      # form parameters
+      form_params = {}
+      form_params['inputFile'] = opts[:'input_file'] if !opts[:'input_file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Apikey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SplitVideoResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VideoApi#video_split_video\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

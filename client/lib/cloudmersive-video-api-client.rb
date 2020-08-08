@@ -18,8 +18,15 @@ require 'cloudmersive-video-api-client/configuration'
 
 # Models
 require 'cloudmersive-video-api-client/models/media_information'
+require 'cloudmersive-video-api-client/models/nsfw_result'
+require 'cloudmersive-video-api-client/models/nsfw_scanned_frame'
+require 'cloudmersive-video-api-client/models/split_video_result'
+require 'cloudmersive-video-api-client/models/still_frame'
+require 'cloudmersive-video-api-client/models/still_frames_result'
+require 'cloudmersive-video-api-client/models/video_file'
 
 # APIs
+require 'cloudmersive-video-api-client/api/audio_api'
 require 'cloudmersive-video-api-client/api/video_api'
 
 module CloudmersiveVideoApiClient
