@@ -4,10 +4,10 @@ All URIs are relative to *https://api.cloudmersive.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**audio_convert_to_aac**](AudioApi.md#audio_convert_to_aac) | **POST** /audio/convert/to/aac | Convert Audio File to AAC format.
-[**audio_convert_to_m4a**](AudioApi.md#audio_convert_to_m4a) | **POST** /audio/convert/to/m4a | Convert Audio File to M4A format.
-[**audio_convert_to_mp3**](AudioApi.md#audio_convert_to_mp3) | **POST** /audio/convert/to/mp3 | Convert Audio File to MP3 format.
-[**audio_convert_to_wav**](AudioApi.md#audio_convert_to_wav) | **POST** /audio/convert/to/wav | Convert Audio File to WAV format.
+[**audio_convert_to_aac**](AudioApi.md#audio_convert_to_aac) | **POST** /video/convert/to/aac | Convert Audio File to AAC format.
+[**audio_convert_to_m4a**](AudioApi.md#audio_convert_to_m4a) | **POST** /video/convert/to/m4a | Convert Audio File to M4A format.
+[**audio_convert_to_mp3**](AudioApi.md#audio_convert_to_mp3) | **POST** /video/convert/to/mp3 | Convert Audio File to MP3 format.
+[**audio_convert_to_wav**](AudioApi.md#audio_convert_to_wav) | **POST** /video/convert/to/wav | Convert Audio File to WAV format.
 
 
 # **audio_convert_to_aac**

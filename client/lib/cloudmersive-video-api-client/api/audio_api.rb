@@ -43,7 +43,7 @@ module CloudmersiveVideoApiClient
         @api_client.config.logger.debug 'Calling API: AudioApi.audio_convert_to_aac ...'
       end
       # resource path
-      local_var_path = '/audio/convert/to/aac'
+      local_var_path = '/video/convert/to/aac'
 
       # query parameters
       query_params = {}
@@ -100,7 +100,7 @@ module CloudmersiveVideoApiClient
         @api_client.config.logger.debug 'Calling API: AudioApi.audio_convert_to_m4a ...'
       end
       # resource path
-      local_var_path = '/audio/convert/to/m4a'
+      local_var_path = '/video/convert/to/m4a'
 
       # query parameters
       query_params = {}
@@ -157,7 +157,7 @@ module CloudmersiveVideoApiClient
         @api_client.config.logger.debug 'Calling API: AudioApi.audio_convert_to_mp3 ...'
       end
       # resource path
-      local_var_path = '/audio/convert/to/mp3'
+      local_var_path = '/video/convert/to/mp3'
 
       # query parameters
       query_params = {}
@@ -214,7 +214,7 @@ module CloudmersiveVideoApiClient
         @api_client.config.logger.debug 'Calling API: AudioApi.audio_convert_to_wav ...'
       end
       # resource path
-      local_var_path = '/audio/convert/to/wav'
+      local_var_path = '/video/convert/to/wav'
 
       # query parameters
       query_params = {}
