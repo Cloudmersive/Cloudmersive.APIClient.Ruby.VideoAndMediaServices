@@ -24,7 +24,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Object] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+    # @option opts [Integer] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
     # @return [String]
     def audio_convert_to_aac(opts = {})
       data, _status_code, _headers = audio_convert_to_aac_with_http_info(opts)
@@ -36,7 +36,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Object] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+    # @option opts [Integer] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def audio_convert_to_aac_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -51,7 +51,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -81,7 +81,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Object] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+    # @option opts [Integer] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
     # @return [String]
     def audio_convert_to_m4a(opts = {})
       data, _status_code, _headers = audio_convert_to_m4a_with_http_info(opts)
@@ -93,7 +93,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Object] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+    # @option opts [Integer] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def audio_convert_to_m4a_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -108,7 +108,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -138,7 +138,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Object] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+    # @option opts [Integer] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
     # @return [String]
     def audio_convert_to_mp3(opts = {})
       data, _status_code, _headers = audio_convert_to_mp3_with_http_info(opts)
@@ -150,7 +150,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Object] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+    # @option opts [Integer] :bit_rate Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def audio_convert_to_mp3_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -165,7 +165,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -195,7 +195,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Object] :sample_rate Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically.
+    # @option opts [Float] :sample_rate Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically.
     # @return [String]
     def audio_convert_to_wav(opts = {})
       data, _status_code, _headers = audio_convert_to_wav_with_http_info(opts)
@@ -207,7 +207,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-    # @option opts [Object] :sample_rate Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically.
+    # @option opts [Float] :sample_rate Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically.
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def audio_convert_to_wav_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -222,7 +222,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?

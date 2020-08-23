@@ -61,7 +61,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -131,7 +131,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -200,7 +200,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -236,7 +236,7 @@ module CloudmersiveVideoApiClient
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
     # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
     # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
-    # @option opts [Object] :frames_per_second Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames.
+    # @option opts [Float] :frames_per_second Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames.
     # @return [StillFramesResult]
     def video_convert_to_still_frames(opts = {})
       data, _status_code, _headers = video_convert_to_still_frames_with_http_info(opts)
@@ -250,7 +250,7 @@ module CloudmersiveVideoApiClient
     # @option opts [String] :file_url Optional; URL of a video file being used for conversion. Use this option for files larger than 2GB.
     # @option opts [Integer] :max_width Optional; Maximum width of the output video, up to the original video width. Defaults to original video width.
     # @option opts [Integer] :max_height Optional; Maximum height of the output video, up to the original video width. Defaults to original video height.
-    # @option opts [Object] :frames_per_second Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames.
+    # @option opts [Float] :frames_per_second Optional; How many video frames per second to be returned as PNG images. Minimum value is 0.1, maximum is 60. Default is 1 frame per second. Maximum of 2000 total frames.
     # @return [Array<(StillFramesResult, Fixnum, Hash)>] StillFramesResult data, response status code and response headers
     def video_convert_to_still_frames_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -332,7 +332,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -395,7 +395,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -515,7 +515,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -584,7 +584,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'fileUrl'] = opts[:'file_url'] if !opts[:'file_url'].nil?
@@ -618,7 +618,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being scanned. Use this option for files larger than 2GB.
-    # @option opts [Object] :frames_per_second Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos.
+    # @option opts [Float] :frames_per_second Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos.
     # @return [NsfwResult]
     def video_scan_for_nsfw(opts = {})
       data, _status_code, _headers = video_scan_for_nsfw_with_http_info(opts)
@@ -630,7 +630,7 @@ module CloudmersiveVideoApiClient
     # @param [Hash] opts the optional parameters
     # @option opts [File] :input_file Input file to perform the operation on.
     # @option opts [String] :file_url Optional; URL of a video file being scanned. Use this option for files larger than 2GB.
-    # @option opts [Object] :frames_per_second Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos.
+    # @option opts [Float] :frames_per_second Optional; How many video frames per second to be scanned. Minimum value is 0.05 (1 frame per 20 seconds), maximum is 1. Default is 0.33 frame per second (1 frame scanned every 3 seconds). Maximum of 1000 total frames can be scanned, potentially adjusting the framerate for longer videos.
     # @return [Array<(NsfwResult, Fixnum, Hash)>] NsfwResult data, response status code and response headers
     def video_scan_for_nsfw_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -708,7 +708,7 @@ module CloudmersiveVideoApiClient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'text/json', 'application/xml', 'text/xml'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
       header_params[:'splitTime'] = split_time

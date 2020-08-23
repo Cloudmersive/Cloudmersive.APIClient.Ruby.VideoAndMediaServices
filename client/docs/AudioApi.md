@@ -34,7 +34,7 @@ api_instance = CloudmersiveVideoApiClient::AudioApi.new
 opts = { 
   input_file: File.new('/path/to/file.txt'), # File | Input file to perform the operation on.
   file_url: 'file_url_example', # String | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-  bit_rate: nil # Object | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+  bit_rate: 56 # Integer | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
 }
 
 begin
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **File**| Input file to perform the operation on. | [optional] 
  **file_url** | **String**| Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. | [optional] 
- **bit_rate** | [**Object**](.md)| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
+ **bit_rate** | **Integer**| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
 
 ### Return type
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 
 
@@ -93,7 +93,7 @@ api_instance = CloudmersiveVideoApiClient::AudioApi.new
 opts = { 
   input_file: File.new('/path/to/file.txt'), # File | Input file to perform the operation on.
   file_url: 'file_url_example', # String | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-  bit_rate: nil # Object | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+  bit_rate: 56 # Integer | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
 }
 
 begin
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **File**| Input file to perform the operation on. | [optional] 
  **file_url** | **String**| Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. | [optional] 
- **bit_rate** | [**Object**](.md)| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
+ **bit_rate** | **Integer**| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
 
 ### Return type
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 
 
@@ -152,7 +152,7 @@ api_instance = CloudmersiveVideoApiClient::AudioApi.new
 opts = { 
   input_file: File.new('/path/to/file.txt'), # File | Input file to perform the operation on.
   file_url: 'file_url_example', # String | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-  bit_rate: nil # Object | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
+  bit_rate: 56 # Integer | Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically.
 }
 
 begin
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **File**| Input file to perform the operation on. | [optional] 
  **file_url** | **String**| Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. | [optional] 
- **bit_rate** | [**Object**](.md)| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
+ **bit_rate** | **Integer**| Optional; Specify the desired bitrate of the converted audio file in kilobytes per second (kB/s). Value may be between 48 and 1,411. By default, the optimal bitrate will be chosen automatically. | [optional] 
 
 ### Return type
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 
 
@@ -211,7 +211,7 @@ api_instance = CloudmersiveVideoApiClient::AudioApi.new
 opts = { 
   input_file: File.new('/path/to/file.txt'), # File | Input file to perform the operation on.
   file_url: 'file_url_example', # String | Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB.
-  sample_rate: nil # Object | Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically.
+  sample_rate: 8.14 # Float | Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically.
 }
 
 begin
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **input_file** | **File**| Input file to perform the operation on. | [optional] 
  **file_url** | **String**| Optional; URL of an audio file being used for conversion. Use this option for files larger than 2GB. | [optional] 
- **sample_rate** | [**Object**](.md)| Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. | [optional] 
+ **sample_rate** | **Float**| Optional; Specify the desired sample rate of the converted audio file in kHz. Value may be between 8 and 96. Standard for audio CDs is 44.1, while DVD audio standard is 48. By default, the optimal sample rate will be chosen automatically. | [optional] 
 
 ### Return type
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json, text/json, application/xml, text/xml
+ - **Accept**: application/octet-stream
 
 
 
